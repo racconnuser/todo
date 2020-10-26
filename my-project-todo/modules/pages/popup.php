@@ -22,7 +22,7 @@
                         <div class="input-group-prepend">
                             <label class="input-group-text" for="inputGroupSelect01">Статус</label>
                         </div>
-                        <select class="custom-select" id="inputGroupSelect01">
+                        <select name="success" class="custom-select" id="inputGroupSelect01">
                             <option selected value="false">false</option>
                             <option value="true">true</option>
                         </select>

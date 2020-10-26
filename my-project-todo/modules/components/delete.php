@@ -1,4 +1,6 @@
 <?
+//    header('url=http://my-project-todo/');
+
   include('connected.php');
 
   if(isset($_GET['del'])) {

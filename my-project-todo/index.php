@@ -4,8 +4,6 @@
   include('modules/pages/popup.php');
   include('modules/pages/header.php');
 ?>
-
-
   <div class="container mt-4">
     <div class="todo-title text-center p-2 mb-2 bg-info text-white">todo</div>
     <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#exampleModalCenter">
@@ -13,23 +11,51 @@
     </button>
     <ul class="list-group">
       <?
+        $activeLink = null;
+        $activeText = null;
+
         while($items = mysqli_fetch_assoc($query)) {
+            if($items['success'] === 'false') {
+                $activeLink = 'btn-success';
+                $activeText = 'Завершить';
+            }
+            if($items['success'] === 'true'){
+                $activeLink = 'btn-secondary disabled';
+                $activeText = 'Выполнена';
+            }
           ?>
             <li class="list-group-item position-relative d-flex flex-column mb-2">
               <span><b>Задача: </b><?=$items['text']?></span>
               <span><b>Описание: </b><?=$items['description']?></span>
               <span><b>Дата: </b><?=$items['date']?></span>
-              <span class="text-info mt-2 mb-1">id: <?=$items['id']?></span>
-              <div class="tools">
-                <a class="btn btn-primary text-white p-1 col-sm-3" href="/">
-                  Редактировать
+              <div class="tools mt-2">
+                <?
+                    if($items['success'] === 'false') {
+                        ?>
+                            <a class="btn btn-primary text-white p-1 col-sm-3" href="/">
+                                Редактировать
+                            </a>
+                        <?
+                    } else {
+                        ?>
+                            <a class="btn <?=$activeLink?> text-white p-1 col-sm-3" href="/">
+                                Редактировать
+                            </a>
+                        <?
+                    }
+                ?>
+                <a class="btn p-1 col-sm-3 <?=$activeLink?>" href="/">
+                  <?=$activeText?>
                 </a>
-                <a class="btn btn-success p-1 col-sm-3" href="/">
-                  Завершить
-                </a>
-                <a class="btn btn-danger p-1 col-sm-3" href="?del=<?=$items['id']?>">
-                  Удалить
-                </a>
+                <?
+                    if($items['success'] === 'true') {
+                        ?>
+                            <a class="btn btn-danger p-1 col-sm-3" href="?del=<?=$items['id']?>">
+                                Удалить
+                            </a>
+                        <?
+                    }
+                ?>
               </div>
             </li>
           <?
