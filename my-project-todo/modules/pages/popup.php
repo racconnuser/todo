@@ -1,30 +1,35 @@
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Создание записи</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-          </div>
-          <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-      </div>
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Создание записи</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/modules/components/add.php" method="POST">
+                    <div class="form-group">
+                        <input name="text" type="text" class="form-control" id="exampleInputText1" aria-describedby="textHelp" placeholder="Название задачи" required autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <input name="description" type="text" class="form-control" id="exampleInputDescriptiont1" aria-describedby="descriptionHelp" placeholder="Описание" required autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <input name="date" type="text" class="form-control" id="exampleInputDate1" aria-describedby="dateHelp" placeholder="Дата" required autocomplete="off">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="inputGroupSelect01">Статус</label>
+                        </div>
+                        <select class="custom-select" id="inputGroupSelect01">
+                            <option selected value="false">false</option>
+                            <option value="true">true</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Создать</button>
+                </form>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
